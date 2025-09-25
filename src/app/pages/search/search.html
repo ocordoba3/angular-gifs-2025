@@ -1,0 +1,84 @@
+<section class="sticky top-0 bg-gray-50 z-10">
+  <!-- Input search bar with favorite button -->
+  <article class="w-full">
+    <div class="relative">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+        <mat-icon aria-hidden="true" fontIcon="search"></mat-icon>
+      </div>
+      <input
+        type="search"
+        id="default-search"
+        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-300 focus:ring-blue-500 focus:border-blue-500 placeholder:text-gray-400"
+        placeholder="Busca tu GIF favorito..."
+        required
+        [value]="searchTerm()"
+        (input)="onInput($event)"
+      />
+      @if (giphyService.searchGifs().length > 0) {
+      <button
+        (click)="addFavoriteSearch()"
+        type="button"
+        class="!absolute !end-2.5 !top-2 !w-fit !p-0 !text-center !min-w-[40px]"
+        matButton="elevated"
+        matTooltipPosition="left"
+        [matTooltip]="tooltipMessage()"
+        aria-label="Button that displays a tooltip when focused or hovered over"
+      >
+        <div class="w-full flex place-content-center">
+          <mat-icon
+            [ngClass]="{ '!text-red-500': isSavedSearch(), '!text-gray-500': !isSavedSearch() }"
+            class="!mr-0 !w-full"
+            fontIcon="favorite"
+          ></mat-icon>
+        </div>
+      </button>
+      }
+    </div>
+  </article>
+
+  <!-- History chips -->
+  @if(searchKeys().length > 0) {
+  <article class="p-4 rounded-lg shadow-md mt-2">
+    <label class="block mb-2 text-sm font-medium text-gray-900">Búsquedas previas</label>
+    <div class="w-full flex flex-nowrap gap-2 overflow-x-auto">
+      @for (key of searchKeys(); track key) {
+      <button
+        class="border border-gray-300 cursor-pointer p-1 rounded-lg text-sm"
+        type="button"
+        (click)="handleHistorySearch(key)"
+      >
+        {{ key }}
+      </button>
+      }
+    </div>
+  </article>
+  }
+</section>
+
+<!-- If exists search results display them, else display a message -->
+@if (giphyService.searchGifs().length > 0) {
+
+<app-gif-list [gifs]="giphyService.searchGifs()"></app-gif-list>
+
+} @else if(searchTerm().length > 0 && giphyService.searchGifs().length === 0) {
+
+<article class="flex flex-col items-center justify-center mt-16">
+  <mat-icon fontIcon="sentiment_dissatisfied" class="text-4xl mb-2 !text-gray-400"></mat-icon>
+  <p class="text-gray-500 dark:text-gray-400 text-lg font-medium">
+    ¡Ups! No encontramos ningún GIF para tu búsqueda.
+  </p>
+  <p class="text-gray-400 dark:text-gray-500 text-sm">
+    Prueba con otra palabra clave o explora las tendencias para encontrar algo divertido.
+  </p>
+</article>
+
+} @else {
+
+<article class="flex flex-col items-center justify-center mt-16">
+  <mat-icon fontIcon="star_half" class="text-4xl mb-2 !text-gray-400"></mat-icon>
+  <p class="text-gray-400 text-lg font-medium">
+    Escribe algo en el buscador para encontrar GIFs divertidos y emocionantes.
+  </p>
+</article>
+
+}

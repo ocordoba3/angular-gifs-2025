@@ -1,0 +1,5 @@
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+  @for (gif of gifs(); track gif.id) {
+  <app-gif-item [gif]="gif"></app-gif-item>
+  }
+</section>
