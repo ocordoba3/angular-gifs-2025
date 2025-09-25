@@ -1,6 +1,6 @@
-<section class="sticky top-0 bg-gray-50 z-10">
+<section class="sticky top-0 bg-khaki z-10 rounded-lg">
   <!-- Input search bar with favorite button -->
-  <article class="w-full">
+  <article class="w-full rounded-lg">
     <div class="relative">
       <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <mat-icon aria-hidden="true" fontIcon="search"></mat-icon>
@@ -43,7 +43,7 @@
     <div class="w-full flex flex-nowrap gap-2 overflow-x-auto">
       @for (key of searchKeys(); track key) {
       <button
-        class="border border-gray-300 cursor-pointer p-1 rounded-lg text-sm"
+        class="bg-cadet text-black cursor-pointer p-1 rounded-lg text-sm border hover:border-gray-300"
         type="button"
         (click)="handleHistorySearch(key)"
       >
@@ -63,11 +63,9 @@
 } @else if(searchTerm().length > 0 && giphyService.searchGifs().length === 0) {
 
 <article class="flex flex-col items-center justify-center mt-16">
-  <mat-icon fontIcon="sentiment_dissatisfied" class="text-4xl mb-2 !text-gray-400"></mat-icon>
-  <p class="text-gray-500 dark:text-gray-400 text-lg font-medium">
-    ¡Ups! No encontramos ningún GIF para tu búsqueda.
-  </p>
-  <p class="text-gray-400 dark:text-gray-500 text-sm">
+  <mat-icon fontIcon="sentiment_dissatisfied" class="text-4xl mb-2 text-cadet"></mat-icon>
+  <p class="text-cadet text-2xl font-medium">¡Ups! No encontramos ningún GIF para tu búsqueda.</p>
+  <p class="text-cadet text-sm">
     Prueba con otra palabra clave o explora las tendencias para encontrar algo divertido.
   </p>
 </article>
@@ -75,8 +73,8 @@
 } @else {
 
 <article class="flex flex-col items-center justify-center mt-16">
-  <mat-icon fontIcon="star_half" class="text-4xl mb-2 !text-gray-400"></mat-icon>
-  <p class="text-gray-400 text-lg font-medium">
+  <mat-icon fontIcon="star_half" class="text-4xl mb-2 text-cadet"></mat-icon>
+  <p class="text-cadet text-2xl font-medium">
     Escribe algo en el buscador para encontrar GIFs divertidos y emocionantes.
   </p>
 </article>

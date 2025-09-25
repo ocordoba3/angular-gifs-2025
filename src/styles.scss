@@ -7,6 +7,74 @@
 @use "tailwindcss";
 @use '@angular/material' as mat;
 
+$color-outer: #4C5760; // Outer Space
+$color-cadet: #93A8AC; // Cadet Gray
+$color-pearl: #D7CEB2; // Pearl
+$color-khaki: #A59E8C; // Khaki
+$color-dim: #66635B; // Dim Gray
+
+@layer utilities {
+  .bg-outer {
+    background-color: $color-outer;
+  }
+
+  .bg-cadet {
+    background-color: $color-cadet;
+  }
+
+  .bg-pearl {
+    background-color: $color-pearl;
+  }
+
+  .bg-khaki {
+    background-color: $color-khaki;
+  }
+
+  .bg-dim {
+    background-color: $color-dim;
+  }
+
+  .text-outer {
+    color: $color-outer;
+  }
+
+  .text-cadet {
+    color: $color-cadet !important;
+  }
+
+  .text-pearl {
+    color: $color-pearl;
+  }
+
+  .text-khaki {
+    color: $color-khaki;
+  }
+
+  .text-dim {
+    color: $color-dim;
+  }
+
+  .border-outer {
+    border-color: $color-outer;
+  }
+
+  .border-cadet {
+    border-color: $color-cadet;
+  }
+
+  .border-pearl {
+    border-color: $color-pearl;
+  }
+
+  .border-khaki {
+    border-color: $color-khaki;
+  }
+
+  .border-dim {
+    border-color: $color-dim;
+  }
+}
+
 html {
   @include mat.theme((
     color: (

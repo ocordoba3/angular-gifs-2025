@@ -1,3 +1,16 @@
 @if (gif() !== null) {
-<img class="h-full w-full rounded-lg object-cover" [src]="gif()?.url" [alt]="gif()?.title" />
+<div class="relative group rounded-lg object-cover h-full w-full">
+  <img class="h-full w-full rounded-lg object-cover" [src]="gif()?.url" [alt]="gif()?.title" />
+  <button
+    (click)="copyToClipboard(gif()?.url || '')"
+    class="group-hover:flex hidden absolute bottom-0 w-full bg-gray-200 text-black p-2 rounded-b-lg cursor-pointer flex justify-center items-center"
+  >
+    {{ copyText() }}
+    @if(isCopied()) {
+    <mat-icon fontIcon="check" class="text-xs ml-2"></mat-icon>
+    } @else {
+    <mat-icon fontIcon="content_copy" class="text-xs ml-2"></mat-icon>
+    }
+  </button>
+</div>
 }
