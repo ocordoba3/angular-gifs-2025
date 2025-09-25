@@ -8,10 +8,10 @@
 @use '@angular/material' as mat;
 
 $color-outer: #4C5760; // Outer Space
-$color-cadet: #93A8AC; // Cadet Gray
-$color-pearl: #D7CEB2; // Pearl
-$color-khaki: #A59E8C; // Khaki
-$color-dim: #66635B; // Dim Gray
+$color-cadet: #868f91; // Cadet Gray
+$color-pearl: #eee9d9; // Pearl
+$color-khaki: #cec6b2; // Khaki
+$color-dim: #91825b; // Dim Gray
 
 @layer utilities {
   .bg-outer {

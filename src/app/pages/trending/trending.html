@@ -1,5 +1,1 @@
-<section class="grid grid-cols-2 md:grid-cols-4 gap-4">
-  @for (gif of giphyService.trendingGifs(); track gif.id) {
-  <img class="h-auto max-w-full rounded-lg" [src]="gif.url" [alt]="gif.title" />
-  }
-</section>
+<app-gif-list [gifs]="giphyService.trendingGifs()"></app-gif-list>

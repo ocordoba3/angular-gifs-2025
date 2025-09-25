@@ -1,6 +1,6 @@
 @if (gif() !== null) {
-<div class="relative group rounded-lg object-cover h-full w-full">
-  <img class="h-full w-full rounded-lg object-cover" [src]="gif()?.url" [alt]="gif()?.title" />
+<div class="relative group">
+  <img class="h-auto w-full rounded-lg object-cover" [src]="gif()?.url" [alt]="gif()?.title" />
   <button
     (click)="copyToClipboard(gif()?.url || '')"
     class="group-hover:flex hidden absolute bottom-0 w-full bg-gray-200 text-black p-2 rounded-b-lg cursor-pointer flex justify-center items-center"

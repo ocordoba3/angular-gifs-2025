@@ -1,5 +1,9 @@
-<section class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-  @for (gif of gifs(); track gif.id) {
-  <app-gif-item [gif]="gif"></app-gif-item>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+  @for (gifGroup of orderedGifs(); track $index) {
+  <div class="grid gap-4">
+    @for (gif of gifGroup; track $index) {
+    <app-gif-item [gif]="gif"></app-gif-item>
+    }
+  </div>
   }
-</section>
+</div>

@@ -30,7 +30,7 @@ export class GiphyService {
     localStorage.setItem(GIFS_STORAGE_KEY, JSON.stringify(this.searchHistory()));
   });
 
-  getTrending(limit: number = 25, rating: string = 'G') {
+  getTrending(limit: number = 32, rating: string = 'G') {
     this.http
       .get<GiphyResponse>(`${this.BASE_URL}/trending`, {
         params: {
@@ -45,7 +45,7 @@ export class GiphyService {
 
   search(
     term: string,
-    limit: number = 25,
+    limit: number = 32,
     offset: number = 0,
     rating: string = 'G',
     lang: string = 'en'

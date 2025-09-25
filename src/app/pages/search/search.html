@@ -1,6 +1,6 @@
-<section class="sticky top-0 bg-khaki z-10 rounded-lg">
+<section class="sticky top-0 bg-khaki z-10 rounded-b-lg">
   <!-- Input search bar with favorite button -->
-  <article class="w-full rounded-lg">
+  <article class="w-full rounded-b-lg">
     <div class="relative">
       <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <mat-icon aria-hidden="true" fontIcon="search"></mat-icon>
@@ -8,7 +8,7 @@
       <input
         type="search"
         id="default-search"
-        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-300 focus:ring-blue-500 focus:border-blue-500 placeholder:text-gray-400"
+        class="block w-full p-4 ps-10 text-sm text-gray-900 bg-white focus:ring-blue-500 focus:border-blue-500 placeholder:text-gray-400"
         placeholder="Busca tu GIF favorito..."
         required
         [value]="searchTerm()"
@@ -18,7 +18,7 @@
       <button
         (click)="addFavoriteSearch()"
         type="button"
-        class="!absolute !end-2.5 !top-2 !w-fit !p-0 !text-center !min-w-[40px]"
+        class="!absolute !end-2.5 !top-1.5 !w-fit !p-0 !text-center !min-w-[40px] !border-none !shadow-none !bg-white"
         matButton="elevated"
         matTooltipPosition="left"
         [matTooltip]="tooltipMessage()"
@@ -39,11 +39,11 @@
   <!-- History chips -->
   @if(searchKeys().length > 0) {
   <article class="p-4 rounded-lg shadow-md mt-2">
-    <label class="block mb-2 text-sm font-medium text-gray-900">Búsquedas previas</label>
+    <label class="block mb-2 text-xs font-medium text-gray-900">Búsquedas previas</label>
     <div class="w-full flex flex-nowrap gap-2 overflow-x-auto">
       @for (key of searchKeys(); track key) {
       <button
-        class="bg-cadet text-black cursor-pointer p-1 rounded-lg text-sm border hover:border-gray-300"
+        class="bg-gray-200 text-black cursor-pointer p-1 rounded-lg text-sm hover:bg-gray-300"
         type="button"
         (click)="handleHistorySearch(key)"
       >
