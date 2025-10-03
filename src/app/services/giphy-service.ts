@@ -22,6 +22,8 @@ export class GiphyService {
   private API_KEY = environment.giphy_api_key;
 
   trendingGifs = signal<LocalGifInterface[]>([]);
+  trendingGifsOffset = signal(0);
+  trendingGifsIsLoading = signal(false);
   searchGifs = signal<LocalGifInterface[]>([]);
   searchHistory = signal<Record<string, LocalGifInterface[]>>(loadFromLocalStorage());
   searchHistoryKeys = computed(() => Object.keys(this.searchHistory()));
@@ -31,16 +33,25 @@ export class GiphyService {
   });
 
   getTrending(limit: number = 32, rating: string = 'G') {
+    if (this.trendingGifsIsLoading()) return;
+
+    this.trendingGifsIsLoading.set(true);
+
     this.http
       .get<GiphyResponse>(`${this.BASE_URL}/trending`, {
         params: {
           api_key: this.API_KEY,
           limit,
           rating,
+          offset: this.trendingGifsOffset() * 32,
         },
       })
       .pipe(map((response) => giphyArrayTransformer(response.data)))
-      .subscribe((data) => this.trendingGifs.set(data));
+      .subscribe((data) => {
+        this.trendingGifs.update((prev) => [...prev, ...data]);
+        this.trendingGifsIsLoading.set(false);
+        this.trendingGifsOffset.set(this.trendingGifsOffset() + 1);
+      });
   }
 
   search(

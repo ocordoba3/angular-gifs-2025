@@ -58,7 +58,7 @@
 <!-- If exists search results display them, else display a message -->
 @if (giphyService.searchGifs().length > 0) {
 
-<app-gif-list [gifs]="giphyService.searchGifs()"></app-gif-list>
+<app-gif-list [gifs]="giphyService.searchGifs()" refName="searchGifs"></app-gif-list>
 
 } @else if(searchTerm().length > 0 && giphyService.searchGifs().length === 0) {
 

@@ -1,4 +1,8 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+<div
+  #gifListRef
+  (scroll)="onScroll()"
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 h-[calc(100vh-72px)] overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:[width:6px] [&::-webkit-scrollbar-thumb]:bg-[#91825b] [&::-webkit-scrollbar-thumb]:rounded-full"
+>
   @for (gifGroup of orderedGifs(); track $index) {
   <div class="grid gap-4">
     @for (gif of gifGroup; track $index) {
